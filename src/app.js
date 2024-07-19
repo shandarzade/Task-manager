@@ -18,7 +18,6 @@ app.use(express.urlencoded({
 }))
 
 app.use(express.static("Public"))
-
 app.use(cookieParser())
 
 
