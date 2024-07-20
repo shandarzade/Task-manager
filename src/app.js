@@ -24,11 +24,13 @@ app.use(cookieParser())
 // Routes import
 
 import userRouter from './routes/user.routes.js'
+import taskRouter from './routes/task.routes.js'
 
 
 //Routes declaration
 
 app.use("/api/v1/users/", userRouter)
+app.use("/api/v1/tasks/", taskRouter)
 
 
 export default app

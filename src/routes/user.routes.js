@@ -6,7 +6,8 @@ import {
     refreshAccessToken,
     updateAccountDetails,
     updateAvatar,
-    changeCurrentPassword
+    changeCurrentPassword,
+    getCurrentUser
 } from "../controllers/user.controller.js";
 import {upload} from '../middlewares/multer.middleware.js'
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -28,5 +29,6 @@ router.route("/register").post(
     router.route("/update-details").post(updateAccountDetails)
     router.route("/update-avatar").post(updateAvatar)
     router.route("/change-password").post(changeCurrentPassword)
+    router.route("/get-user").get(getCurrentUser)
 
 export default router

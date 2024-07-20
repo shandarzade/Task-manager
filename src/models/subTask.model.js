@@ -2,7 +2,10 @@ import mongoose from "mongoose";
 
 const subTaskSchema = new mongoose.Schema(
 {
-
+    title:{
+        type: String,
+        required: true
+    },
     content:{
         type:String,
         required: true
@@ -11,11 +14,6 @@ const subTaskSchema = new mongoose.Schema(
         type: Boolean,
         default: false
     },
-    createdBy:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
-
 }, 
 {timestamps:true})
 
