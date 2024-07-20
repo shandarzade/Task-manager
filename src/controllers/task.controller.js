@@ -62,7 +62,6 @@ const addTask = asyncHandler( async (req, res) => {
 const updateTask = asyncHandler( async (req, res) => {
     const  {oldTitle, newTitle, oldContent, newContent} = req.body
 
-    // const task = await SubTask.findById(req.task?._id)
     const taskId = req.task?._id;
 
     if (!taskId) {
