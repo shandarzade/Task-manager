@@ -114,10 +114,33 @@ const deleteTask = asyncHandler(async (req, res) => {
     }
 });
 
+const getAllTask = asyncHandler( async (req, res) => {
+
+    try {
+        const tasks = await SubTask.find()
+
+        if(!tasks){
+            throw new ApiError(400, "Tasks are not found")
+        }
+
+        return res.status(200)
+        .json(
+            new ApiResponse(
+                200,
+                tasks,
+                "Tasks fetch succesfully"
+            )
+        )
+    } catch (error) {
+        throw new ApiError(400, "something went wrong while getting the tasks")
+    }
+} )
+
 
 export { 
     getTask,
     addTask,
     updateTask,
-    deleteTask
+    deleteTask,
+    getAllTask
  }
