@@ -6,19 +6,19 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 
 
 const getTask = asyncHandler( async (req, res) => {
-
+    const taskId = req.params.id;
     try {
-        const tasks = await SubTask.find()
+        const task = await SubTask.findById(taskId);
     
-        if(!tasks){
-            throw new ApiError(400, "Tasks are not found")
+        if(!task){
+            throw new ApiError(400, "Task not found")
         }
     
         return res.status(200)
         .json(
             new ApiResponse(
                 200,
-                tasks,
+                task,
                 "Tasks fetch succesfully"
             )
         )
