@@ -40,7 +40,7 @@ const TaskCard = ({ id, title, content, createdAt }) => {
                     bgColor="bg-blue-800"
                     onClick={ () => {
                     console.log("navigate to view-details-task/id")
-                    navigate("/view-details-task/id")}} 
+                    navigate(`/view-details-task/${id}`)}} 
                 >
                     View details
                 </Button>

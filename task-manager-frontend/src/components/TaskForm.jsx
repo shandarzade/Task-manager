@@ -15,6 +15,7 @@ function TaskForm({ task }) {
     const navigate = useNavigate();
 
     const onSubmit = async (formData) => {
+        console.log(formData.title, formData.content)
         try {
             if (task) {
                 const updatedTask = {

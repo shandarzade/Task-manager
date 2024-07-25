@@ -1,9 +1,14 @@
 import conf from "../conf/conf";
 
 export class TaskService {
-    async createTask() {
+    async createTask({ title, content }) {
         try {
-            const response = await fetch(`${conf.baseUrl}/tasks/add-task`);
+            const requestOptions = {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, content }),
+            };
+            const response = await fetch(`${conf.baseUrl}/tasks/add-task`, requestOptions);
             const data = await response.json();
             return data;
         } catch (error) {
@@ -32,24 +37,32 @@ export class TaskService {
         }
     }
 
-    async getTask() {
+    async getTasks() {
         try {
-            const response = await fetch(`${conf.baseUrl}/tasks/get-task`);
-            return response;
+            const response = await fetch(`${conf.baseUrl}/tasks/get-tasks`);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            const data = await response.json();
+            return data.data; 
         } catch (error) {
-            console.error('Error while fetching Task from api in getTask service:', error);
-            throw error;
+            console.error('Error while fetching tasks:', error);
+            throw error; 
         }
     }
     
     async getTasks() {
-        try {
-            const response = await fetch(`${conf.baseUrl}/tasks/get-tasks`);
-            return response;
-        } catch (error) {
-            console.error('Error while fetching Task from api in getTask service:', error);
-            throw error;
-        }
+            return (fetch(`${conf.baseUrl}/tasks/get-tasks`)
+            .then((response) => response.json())
+            .then( ( data) => {
+            //    console.log(data.data)
+                return data.data
+            })
+            .catch( (error) => {
+                console.error('Error while fetching Task from api in getTask service:', error);
+                throw error;
+    }))
+            
     }
 }
 

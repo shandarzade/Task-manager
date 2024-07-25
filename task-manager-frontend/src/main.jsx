@@ -11,6 +11,7 @@ import Home from './pages/Home.jsx'
 import EditTask from './pages/EditTask.jsx'
 import Login from './pages/Login.jsx'
 import Signup from './pages/Signup.jsx'
+import ViewDetailsTask from './pages/ViewDetailsTask.jsx'
 
 const router = createBrowserRouter([
   {
@@ -40,28 +41,28 @@ const router = createBrowserRouter([
         {
           path: "/add-task",
           element: (
-              // <AuthLayout authentication>
-              //     {" "}
+              <AuthLayout authentication>
+                  {" "}
                   <AddTask />
-              // </AuthLayout>
+              </AuthLayout>
           ),
       },
       {
           path: "/edit-task/:slug",
           element: (
-              // <AuthLayout authentication>
-              //     {" "}
+              <AuthLayout authentication>
+                  {" "}
                   <EditTask />
-              //  </AuthLayout> 
+              </AuthLayout> 
           ),
       },
       {
         path: "/view-details-task/:slug",
         element: (
-            // <AuthLayout authentication>
-            //     {" "}
-                <EditTask />
-            // </AuthLayout>
+            <AuthLayout authentication>
+                {" "}
+                <ViewDetailsTask />
+            </AuthLayout>
         ),
     },
       ]
