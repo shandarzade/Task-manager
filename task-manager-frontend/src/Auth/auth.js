@@ -30,17 +30,17 @@ export class AuthService {
     
             const response = await fetch(`${conf.baseUrl}/users/register`, requestOptions);
             console.log(response)
+            if(response.status == 409){
+                throw new Error('Email already exist')
+            }
             if (!response.ok) {
                 throw new Error('Failed to create account');
             }
-    
             const data = await response.json();
-            alert("User created successfully");
-    
-            // Optionally, you can call login function here if needed
-            // await this.login(data.email, data.password);
-    
-            return data; // Return any data that the API responds with, if needed
+
+            // alert("User created successfully");
+            return data; 
+            
         } catch (error) {
             console.error('Error while creating account in createAccount service:', error);
             throw error;

@@ -9,8 +9,11 @@ import { useDispatch } from 'react-redux'
 function Signup() {
     const {register, handleSubmit} = useForm()
     const [error, setError] = useState("")
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     const create = async (data) => {
+        console.log(data)
         setError("")
         try {
             const userData = await authService.createAccount(data)
@@ -19,8 +22,9 @@ function Signup() {
                 if (userData) {
                     dispatch(login(userData))
                 }
-                navigate("/")
+                
             }
+            navigate("/")
 
         } catch (error) {
             setError(error.message)
@@ -35,19 +39,19 @@ function Signup() {
         </div>
         <div className={`mx-auto w-full max-w-lg  rounded-xl p-8 border-2 border-blue-800`}>  
         
-        {/* {error && <p className="text-red-600 mt-8 text-center">{error}</p>} */}
+        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
 
         <form onSubmit={handleSubmit(create)}>
             <div className='space-y-5 mt-2 text-left font-semibold'>
                 <Input 
                     placeholder = "Fisrt Name"
-                    {...register("Fisrt Name", {
+                    {...register("firstName", {
                         required:true}
                     )}
                 />
                 <Input 
                     placeholder = "Last Name"
-                    {...register("Last Name", {
+                    {...register("lastName", {
                         required:true}
                     )}
                 />
