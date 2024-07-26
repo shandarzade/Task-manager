@@ -37,7 +37,7 @@ export class TaskService {
         }
     }
 
-    async getTasks() {
+    async getTask() {
         try {
             const response = await fetch(`${conf.baseUrl}/tasks/get-tasks`);
             if (!response.ok) {

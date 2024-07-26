@@ -6,13 +6,15 @@ import { useNavigate, useParams } from 'react-router-dom'
 function EditTask(  ) {
 
     const [ task, setTasks] = useState()
-    const { taskId } = useParams()
+    const { slug } = useParams()
     const navigate  = useNavigate()
 
     useEffect( () => {
-        if (taskId) {
-            taskService.getTask(taskId).then( (task) => {
+        console.log(slug)
+        if (slug) {
+            taskService.getTask(slug).then( (task) => {
                 if (task) {
+                    console.log(task)
                     setTasks(task)
                 }
             }).catch(
@@ -21,7 +23,7 @@ function EditTask(  ) {
                 }
             )
         }
-    }, [taskId])
+    }, [slug])
 
     const saveHandler = () => {}
 

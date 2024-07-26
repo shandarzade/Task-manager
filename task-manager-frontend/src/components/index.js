@@ -9,6 +9,7 @@ import Signup from "./Signup"
 import TaskCard from "./TaskCard"
 import TaskForm from "./TaskForm"
 import AuthLayout from "./AuthLayout"
+import TaskList from "./TaskList"
 
 export {
     Input,
@@ -22,5 +23,5 @@ export {
     TaskCard,
     TaskForm,
     AuthLayout,
-   
+    TaskList
 }

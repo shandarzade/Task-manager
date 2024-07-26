@@ -25,10 +25,11 @@ function Login() {
                 if (userData) {
                     dispatch(authLogin(userData))
                 }
+                
                 navigate("/")
             }
         } catch (error) {   
-            setError(error.message)
+            setError("Invalid Password or Email")
         }
     }
 
@@ -41,7 +42,7 @@ function Login() {
         </div>
         <div className={`mx-auto w-full max-w-lg rounded-xl p-8 border-2 border-blue-800`}>
             
-            {/* {error && <p className="text-red-600 mt-8 text-center">{error}</p>} */}
+            {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
             <form onSubmit={handleSubmit(login)} className='mt-2 text-left font-semibold'>
                 <div className="space-y-5 ">
                     <Input 
